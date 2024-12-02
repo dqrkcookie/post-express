@@ -1,5 +1,9 @@
 import express from 'express';
 
+const data = await import('../sample.json', {
+  assert: { type: 'json' },
+});
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -37,3 +41,5 @@ app.post('/players', (req, res) => {
 
   if (new_player) return res.status(201).send(sample_db);
 });
+
+console.log(data.default);
